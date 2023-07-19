@@ -1,4 +1,4 @@
-
+'use client'
 import anime from 'animejs/lib/anime.es.js';
 import Link from 'next/link';
 import spotify_img from './assets/spotify.png';
@@ -8,15 +8,15 @@ import twitter_img from './assets/twitter.png';
 import github_img from './assets/github.png';
 import ca_logo from './assets/ca_logo_nobg.png';
 import { StaticImageData } from 'next/image';
+import { useEffect } from 'react';
 
 import Image from 'next/image';
 import { link } from 'fs';
 
 //make it one big scrolldown like the pertubator site
 
-
 //big and stretched out
-
+//perhaps use that animejs rippling grid effect instead of the h1?
 const Title = () => {
   return (
     <section >
@@ -25,7 +25,7 @@ const Title = () => {
         crystal abyss
       </h1>
       <hr className='opacity-20 -z-1 max-w-4xl justify-center 
-      flex mx-auto'></hr>
+      flex mx-auto mb-32'></hr>
     </section>
 
   )
@@ -104,9 +104,11 @@ const SocialsComponent: React.FC<SocialsProps> = ({ title, link_name, img_src })
   )
 }
 const Socials = () => {
+
+
   return (
     <section className='glass-pre'>
-      <div className='glass'>
+      <div className='glass staggered'>
         <Header text='Follow me here' />
         <ul className='space-y-8'>
           <SocialsComponent
@@ -123,6 +125,8 @@ const Socials = () => {
     </section>
   )
 }
+
+
 //list streaming services
 //the div wrapped around creates the displaced border
 const Listen = () => {
@@ -164,7 +168,7 @@ const About = () => {
   return (
     <>
       <div className='glass-pre'>
-        <section className='glass '>
+        <section className='glass'>
           <Header text='A bit about me' />
           <p className='text-xl leading-relaxed'>
             Crystal Abyss is a music project by me, Benjamin Donahue.
@@ -184,10 +188,40 @@ const About = () => {
   )
 }
 export default function Home() {
+  useEffect(() => {
+    // Define your animation
+    const animation = anime({
+      targets: '.glass-pre',
+      translateY: -80,
+      autoplay: false, //only run when in view
+    });
+
+    const element = document.querySelector('.glass-pre');
+
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        animation.play();
+      }
+    }, {
+      threshold: 1.0
+    });
+
+
+    if (element) {
+      observer.observe(element);
+    }
+
+    //Clean up observer on unmount
+    return () => {
+      if (element) {
+        observer.unobserve(element);
+      }
+    };
+  }, []);
   return (
     <main className='w-full space-y-16 '>
       <Title />
-      <section className='justify-center mx-auto max-w-2xl space-y-16 '>
+      <section className='justify-center mx-auto max-w-2xl space-y-16'>
         <Listen />
         <Socials />
         <About />
