@@ -3,6 +3,8 @@ import Link from 'next/link';
 import spotify_img from './assets/spotify.png';
 import soundcloud_img from './assets/soundcloud.png';
 import youtube_img from './assets/youtube.png';
+import twitter_img from './assets/twitter.png';
+import github_img from './assets/github.png';
 import { StaticImageData } from 'next/image';
 
 import Image from 'next/image';
@@ -38,11 +40,23 @@ interface ListenProps {
   img_src: StaticImageData;
 }
 
+const ImageComponent: React.FC<{ img_src: StaticImageData }> = ({ img_src }) => {
+  return (
+    <Image src={img_src} alt='streaming service logo'
+      className='max-w-sm w-24 mr-4 rounded-xl' />
+
+  )
+}
 const ListenComponent: React.FC<ListenProps> = ({ link_name, img_src, title }) => {
   return (
     <li className='flex text-2xl'>
-      <Image src={img_src} alt='streaming service logo'
-        className='max-w-sm w-24 mr-4 rounded-xl' />
+      {link_name ?
+        <a href={link_name} target='_blank'>
+          <ImageComponent img_src={img_src} />
+        </a> :
+        <ImageComponent img_src={img_src} />
+      }
+
       {
         link_name ?
           <div className='items-center my-auto'>
@@ -54,39 +68,48 @@ const ListenComponent: React.FC<ListenProps> = ({ link_name, img_src, title }) =
             <div>Coming soon</div>
           </div>
       }
-
     </li>
   )
-}//add glassmorphism
-const Discography = () => {
-
 }
+
 interface SocialsProps {
   title: string;
-  //img_src: StaticImageData;
+  img_src: StaticImageData;
   link_name: string
 }
-const SocialsComponent: React.FC<SocialsProps> = ({ title, link_name }) => {
+const SocialsComponent: React.FC<SocialsProps> = ({ title, link_name, img_src }) => {
   return (
     <li className='flex text-2xl'>
-      <h1>{title}</h1>
-      <a href={link_name} />
+      <a href={link_name} target='_blank'>
+        <ImageComponent img_src={img_src} />
+      </a>
+      <a href={link_name}>
+        <h1>{title}</h1>
+      </a>
     </li>
   )
 }
 const Socials = () => {
   return (
-    <ul className='glass'>
-      <SocialsComponent
-        title='Twitter'
-        link_name='https://twitter.com/ca_music_'
+    <section className='glass-pre'>
 
-      />
-    </ul>
+      <ul className='glass space-y-8'>
+        <Header text='Follow me here' />
+        <SocialsComponent
+          title='Twitter'
+          link_name='https://twitter.com/ca_music_'
+          img_src={twitter_img}
+        />
+        <SocialsComponent
+          title='Github'
+          link_name='https://github.com/OblivionNoirV2'
+          img_src={github_img} />
+      </ul>
+    </section>
   )
-
 }
 //list streaming services
+//the div wrapped around creates the displaced border
 const Listen = () => {
   return (
     <div className='glass-pre'>
@@ -126,7 +149,7 @@ const About = () => {
   return (
     <>
       <div className='glass-pre'>
-        <section className='glass'>
+        <section className='glass '>
           <Header text='A bit about me' />
           <p className='text-xl leading-relaxed'>
             Crystal Abyss is a music project by me, Benjamin Donahue.
@@ -142,6 +165,7 @@ const About = () => {
           </p>
         </section>
       </div>
+      <br></br>
     </>
   )
 }
@@ -151,7 +175,7 @@ export default function Home() {
       <Title />
       <section className='justify-center mx-auto max-w-2xl space-y-16 '>
         <Listen />
-
+        <Socials />
         <About />
 
 
