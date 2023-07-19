@@ -44,3 +44,20 @@ html {
   border-radius: 1rem;
   border: .1rem solid rgba(255, 255, 255, 0.18);
 }
+
+a {
+  color: rgb(1, 106, 158);
+}
+
+a:visited {
+  color: rgb(74, 1, 158);
+}
+
+a:active {
+  color: rgb(250, 250, 251);
+
+}
+
+.image-c:hover {
+  transform: scale(1.10);
+}

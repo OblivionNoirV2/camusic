@@ -1,3 +1,4 @@
+
 import anime from 'animejs/lib/anime.es.js';
 import Link from 'next/link';
 import spotify_img from './assets/spotify.png';
@@ -5,6 +6,7 @@ import soundcloud_img from './assets/soundcloud.png';
 import youtube_img from './assets/youtube.png';
 import twitter_img from './assets/twitter.png';
 import github_img from './assets/github.png';
+import ca_logo from './assets/ca_logo_nobg.png';
 import { StaticImageData } from 'next/image';
 
 import Image from 'next/image';
@@ -14,14 +16,19 @@ import { link } from 'fs';
 
 
 //big and stretched out
+
 const Title = () => {
   return (
-    <h1 className='page-title text-8xl flex justify-center 
+    <section >
+      <h1 className='page-title text-8xl flex justify-center 
     w-full mx-auto tracking-widest'>
-      crystal abyss
-    </h1>
-  )
+        crystal abyss
+      </h1>
+      <hr className='opacity-20 -z-1 max-w-4xl justify-center 
+      flex mx-auto'></hr>
+    </section>
 
+  )
 }
 
 //use spotify api
@@ -40,21 +47,28 @@ interface ListenProps {
   img_src: StaticImageData;
 }
 
-const ImageComponent: React.FC<{ img_src: StaticImageData }> = ({ img_src }) => {
+interface ImageProps {
+  img_src: StaticImageData;
+  alt: string;
+}
+
+const ImageComponent: React.FC<ImageProps> = ({
+  img_src, alt }) => {
   return (
     <Image src={img_src} alt='streaming service logo'
-      className='max-w-sm w-24 mr-4 rounded-xl' />
+      className='image-c max-w-sm w-24 mr-4 rounded-xl' />
 
   )
 }
+
 const ListenComponent: React.FC<ListenProps> = ({ link_name, img_src, title }) => {
   return (
     <li className='flex text-2xl'>
       {link_name ?
         <a href={link_name} target='_blank'>
-          <ImageComponent img_src={img_src} />
+          <ImageComponent img_src={img_src} alt={`${title} logo`} />
         </a> :
-        <ImageComponent img_src={img_src} />
+        <ImageComponent img_src={img_src} alt={`${title} logo`} />
       }
 
       {
@@ -81,7 +95,7 @@ const SocialsComponent: React.FC<SocialsProps> = ({ title, link_name, img_src })
   return (
     <li className='flex text-2xl'>
       <a href={link_name} target='_blank'>
-        <ImageComponent img_src={img_src} />
+        <ImageComponent img_src={img_src} alt={`${title} logo`} />
       </a>
       <a href={link_name}>
         <h1>{title}</h1>
@@ -92,19 +106,20 @@ const SocialsComponent: React.FC<SocialsProps> = ({ title, link_name, img_src })
 const Socials = () => {
   return (
     <section className='glass-pre'>
-
-      <ul className='glass space-y-8'>
+      <div className='glass'>
         <Header text='Follow me here' />
-        <SocialsComponent
-          title='Twitter'
-          link_name='https://twitter.com/ca_music_'
-          img_src={twitter_img}
-        />
-        <SocialsComponent
-          title='Github'
-          link_name='https://github.com/OblivionNoirV2'
-          img_src={github_img} />
-      </ul>
+        <ul className='space-y-8'>
+          <SocialsComponent
+            title='Twitter'
+            link_name='https://twitter.com/ca_music_'
+            img_src={twitter_img}
+          />
+          <SocialsComponent
+            title='Github'
+            link_name='https://github.com/OblivionNoirV2'
+            img_src={github_img} />
+        </ul>
+      </div>
     </section>
   )
 }
@@ -161,11 +176,10 @@ const About = () => {
             being a couple of my biggest inspirations along with
             other artists like <a href='https://open.spotify.com/track/6rMRUcrL63WNnhMPYew7pA?si=17d1a83abb8d437f' target='_blank'>MGLA </a> and
             <a href='https://open.spotify.com/track/4m4Yj2z7CG1LUNbcg1uOP3?si=bd5d217dd6614e89' target='_blank'> Perturbator. </a>
-            Dark and beautiful with a story in mind is how I compose. Thanks for visiting my site!
+            Dark and beautiful with a story in mind is how I compose. Thanks for visiting my site and I hope you like what you hear!
           </p>
         </section>
       </div>
-      <br></br>
     </>
   )
 }
@@ -177,14 +191,12 @@ export default function Home() {
         <Listen />
         <Socials />
         <About />
-
-
+        <Image src={ca_logo} alt="crystal abyss logo"
+          className='rounded-2xl max-w-[16rem] mx-auto' />
+        <br></br>
       </section>
-
-
-
-
       <script src="anime.min.js"></script>
+
     </main>
   );
 }
