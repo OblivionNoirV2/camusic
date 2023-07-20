@@ -55,7 +55,7 @@ interface ImageProps {
 const ImageComponent: React.FC<ImageProps> = ({
   img_src, alt }) => {
   return (
-    <Image src={img_src} alt='streaming service logo'
+    <Image src={img_src} alt={alt}
       className='image-c max-w-sm w-24 mr-4 rounded-xl' />
 
   )
@@ -231,7 +231,7 @@ export default function Home() {
           className='rounded-2xl max-w-[16rem] mx-auto' />
         <br></br>
       </section>
-      <script src="anime.min.js"></script>
+      <script src="anime.min.js" async></script>
 
     </main>
   );
