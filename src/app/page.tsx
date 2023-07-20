@@ -136,6 +136,7 @@ const Listen = () => {
         <Header text='Listen' />
         <ul className='space-y-8'>
           <ListenComponent
+            link_name='https://open.spotify.com/artist/5OKSxZy691sNwb7rMoA08L'
             img_src={spotify_img}
             title='Spotify'
           />
@@ -188,8 +189,8 @@ const About = () => {
   )
 }
 export default function Home() {
+
   useEffect(() => {
-    // Define your animation
     const animation = anime({
       targets: '.glass-pre',
       translateY: -80,
@@ -199,13 +200,14 @@ export default function Home() {
     const element = document.querySelector('.glass-pre');
 
     const observer = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) {
-        animation.play();
-      }
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animation.play();
+        }
+      });
     }, {
       threshold: 1.0
     });
-
 
     if (element) {
       observer.observe(element);
