@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import Image from 'next/image';
 import { link } from 'fs';
+import { TrackMap } from './TrackLookup';
 
 //make it one big scrolldown like the pertubator site
 
@@ -40,8 +41,8 @@ const CurrentDescription = () => {
 
 }
 //or upcoming, whatever fits
-const LatestRelease = () => {
-
+const LatestRelease: React.FC<{ latest: number }> = ({ latest }) => {
+  console.log("latest", latest)
   const [isDescShown, setIsDescShown] = useState(true);
 
   return (
@@ -50,7 +51,7 @@ const LatestRelease = () => {
         <figure>
           <h1></h1>
           <iframe
-            src="https://open.spotify.com/embed/track/4kxdr5ei4XLYpHP3p5JAn0?utm_source=generator" width="100%" height="352" frameBorder="0"
+            src="https://open.spotify.com/embed/track/4kxdr5ei4XLYpHP3p5JAn0?utm_source=generator" width="100%" height="352"
             allowFullScreen
             allow="autoplay; 
         clipboard-write; 
@@ -244,12 +245,19 @@ export default function Home() {
       }
     };
   }, []);
+  const latest_release = Math.max(...Array.from(TrackMap.keys()));
+  //for dev purposes. Without this it only changes on full refresh
+  useEffect(() => {
+    setLatest(latest_release)
+
+  }, [latest_release])
+  const [latest, setLatest] = useState(latest_release)
   return (
     <main className='w-full space-y-16 '>
       <Title />
 
       <section className='justify-center mx-auto max-w-2xl space-y-16'>
-        <LatestRelease />
+        <LatestRelease latest={latest} />
         <Listen />
         <Socials />
         <About />

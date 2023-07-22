@@ -28,6 +28,7 @@ html {
       0.1);
 }
 
+/*so as not to dim the album cover*/
 .glass:not(.release)::before {
   pointer-events: none;
   content: "";
