@@ -28,7 +28,7 @@ html {
       0.1);
 }
 
-.glass::before {
+.glass:not(.release)::before {
   pointer-events: none;
   content: "";
   top: 0;

@@ -9,7 +9,7 @@ import github_img from './assets/github.png';
 import ca_logo from './assets/ca_logo_nobg.png';
 import { StaticImageData } from 'next/image';
 import { useEffect } from 'react';
-
+import { useState } from 'react';
 import Image from 'next/image';
 import { link } from 'fs';
 
@@ -30,14 +30,38 @@ const Title = () => {
 
   )
 }
-
-//use spotify api
-const LatestRelease = () => {
+//uses a hash lookup for tracks
+const CurrentDescription = () => {
   return (
-    <figure>
-      <h1></h1>
-      <img></img> {/*can I get the album cover too? */}
-    </figure>
+    <p>
+      temp
+    </p>
+  )
+
+}
+//or upcoming, whatever fits
+const LatestRelease = () => {
+
+  const [isDescShown, setIsDescShown] = useState(true);
+
+  return (
+    <div className='glass-pre'>
+      <section className='glass release'>
+        <figure>
+          <h1></h1>
+          <iframe
+            src="https://open.spotify.com/embed/track/4kxdr5ei4XLYpHP3p5JAn0?utm_source=generator" width="100%" height="352" frameBorder="0"
+            allowFullScreen
+            allow="autoplay; 
+        clipboard-write; 
+        encrypted-media; 
+        fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+          <p>description</p>
+        </figure>
+      </section>
+    </div>
   )
 }
 
@@ -223,7 +247,9 @@ export default function Home() {
   return (
     <main className='w-full space-y-16 '>
       <Title />
+
       <section className='justify-center mx-auto max-w-2xl space-y-16'>
+        <LatestRelease />
         <Listen />
         <Socials />
         <About />
