@@ -17,7 +17,6 @@ import { TrackMap } from './TrackLookup';
 //make it one big scrolldown like the pertubator site
 
 //big and stretched out
-//perhaps use that animejs rippling grid effect instead of the h1?
 const Title = () => {
   return (
     <section >
@@ -31,35 +30,35 @@ const Title = () => {
 
   )
 }
-//uses a hash lookup for tracks
-const CurrentDescription = () => {
-  return (
-    <p>
-      temp
-    </p>
-  )
 
-}
-//or upcoming, whatever fits
+
+//latest is an index
 const LatestRelease: React.FC<{ latest: number }> = ({ latest }) => {
   console.log("latest", latest)
-  const [isDescShown, setIsDescShown] = useState(true);
 
   return (
     <div className='glass-pre'>
       <section className='glass release'>
         <figure>
-          <h1></h1>
-          <iframe
-            src="https://open.spotify.com/embed/track/4kxdr5ei4XLYpHP3p5JAn0?utm_source=generator" width="100%" height="352"
+          <Header text='Latest Release' />
+          <strong className='text-3xl '>
+            <h1 className='flex justify-start mb-2'>
+              {TrackMap.get(latest)!.title}
+            </h1>
+          </strong>
+          <iframe className='w-full h-96'
+            src={TrackMap.get(latest)!.iframe_src}
             allowFullScreen
-            allow="autoplay; 
-        clipboard-write; 
-        encrypted-media; 
-        fullscreen; picture-in-picture"
-            loading="lazy">
+          >
           </iframe>
-          <p>description</p>
+          <p className='flex justify-start'>
+            {TrackMap.get(latest)!.description}
+          </p>
+          <br></br>
+          <em className='text-xs'>
+            *note that I don't support monetizing AI art,
+            but returns on this will be minimal and I'm too broke for an artist right now
+          </em>
         </figure>
       </section>
     </div>
@@ -184,7 +183,7 @@ const Listen = () => {
 const Header: React.FC<{ text: string }> = ({ text }) => {
   return (
     <>
-      <h1 className='text-4xl'>{text}</h1>
+      <h1 className='text-4xl flex justify-start'>{text}</h1>
       <hr className='mb-4'></hr>
     </>
 
@@ -249,7 +248,6 @@ export default function Home() {
   //for dev purposes. Without this it only changes on full refresh
   useEffect(() => {
     setLatest(latest_release)
-
   }, [latest_release])
   const [latest, setLatest] = useState(latest_release)
   return (
