@@ -14,7 +14,8 @@ export const metadata: Metadata = {
     'Benjamin Donahue',
     'music', 'composer',
   ],
-  authors: [{ name: 'Benjamin Donahue' }]
+  authors: [{ name: 'Benjamin Donahue' }],
+  
 
 }
 

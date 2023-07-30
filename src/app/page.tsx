@@ -127,9 +127,8 @@ const SocialsComponent: React.FC<SocialsProps> = ({ title, link_name, img_src })
     </li>
   )
 }
+
 const Socials = () => {
-
-
   return (
     <section className='glass-pre'>
       <div className='glass staggered'>
@@ -212,10 +211,15 @@ const About = () => {
     </>
   )
 }
+//links to page with all descriptions and stuff 
+//Include a search bar on that page
+const FullDiscog = () => {
+
+}
 export default function Home() {
 
   useEffect(() => {
-    const animation = anime({
+    const bounce = anime({
       targets: '.glass-pre',
       translateY: -80,
       autoplay: false, //only run when in view
@@ -226,7 +230,7 @@ export default function Home() {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          animation.play();
+          bounce.play();
         }
       });
     }, {
@@ -264,10 +268,8 @@ export default function Home() {
         <br></br>
       </section>
       <script src="anime.min.js" async></script>
-
     </main>
   );
 }
 
 
-//flower petals circling a sphere, use elipse svg
