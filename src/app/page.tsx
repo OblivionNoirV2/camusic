@@ -33,16 +33,28 @@ const Title = () => {
   )
 }
 
+const Album: React.FC<{ upcoming: string }> = ({ upcoming }) => {
+  const [isUpcoming, setIsUpcoming] = useState(true);
 
-//latest is an index
-const LatestRelease: React.FC<{ latest: number }> = ({ latest }) => {
-  console.log("latest", latest)
+  useEffect(() => {
+    if (upcoming === 'Upcoming') {
+      setIsUpcoming(true);
+    } else {
+      const past_release_date = new Date(upcoming);
+      const now = new Date();
+      setIsUpcoming(past_release_date > now);
+    }
+  }, [upcoming]);
+  //if the release date has passed, switch "upcoming" to "latest"
+  const album_header = isUpcoming ? 'Upcoming Album' : 'Latest Album';
+
+  console.log("upcoming", upcoming)
 
   return (
     <div className='glass-pre'>
       <section className='glass release'>
         <figure>
-          <Header text='Upcoming Album' />
+          <Header text={album_header} />
           <strong className='text-3xl '>
             <h1 className='flex justify-start mb-2'>
               Artificial Eden
@@ -53,7 +65,6 @@ const LatestRelease: React.FC<{ latest: number }> = ({ latest }) => {
             alt='Upcoming album cover art'
             className='rounded-xl' />
           <p className='flex justify-start'>
-            {/*use an album map with descriptions*/}
             {AlbumMap.get("Artificial Eden")!.description}
             Release date: {AlbumMap.get("Artificial Eden")!.release_date}
           </p>
@@ -63,7 +74,7 @@ const LatestRelease: React.FC<{ latest: number }> = ({ latest }) => {
           </em>
         </figure>
       </section>
-    </div >
+    </div>
   )
 }
 
@@ -123,7 +134,7 @@ const SocialsComponent: React.FC<SocialsProps> = ({ title, link_name, img_src })
       <a href={link_name} target='_blank'>
         <ImageComponent img_src={img_src} alt={`${title} logo`} />
       </a>
-      <a href={link_name}>
+      <a href={link_name} target='_blank'>
         <h1>{title}</h1>
       </a>
     </li>
@@ -138,7 +149,7 @@ const Socials = () => {
         <ul className='space-y-8'>
           <SocialsComponent
             title='Twitter'
-            link_name='https://twitter.com/ca_music_'
+            link_name='https://twitter.com/Enigma_Soul01'
             img_src={twitter_img}
           />
           <SocialsComponent
@@ -197,9 +208,7 @@ const About = () => {
         <section className='glass'>
           <Header text='A bit about me' />
           <p className='text-xl leading-relaxed'>
-            Crystal Abyss is a music project by me, Benjamin Donahue.
-            Music has always been a deep love of mine since I was little,
-            so...here I am fullfilling one of my biggest dreams. I take a lot
+            Crystal Abyss is a music project by me, Benjamin Donahue. I take a lot
             of inspiration from video game music, composers such as
             <a href='https://open.spotify.com/track/4aPltIjGkJx26Y9cBHu14U?si=66d4d060c0ec4fec' target='_blank'> Yoko Shimomura </a>
             and <a href='https://open.spotify.com/track/65CefKbmaG0ZkumWSFKbxC?si=7c7af95103094401' target='_blank'>Yuka Kitamura </a>
@@ -250,18 +259,13 @@ export default function Home() {
       }
     };
   }, []);
-  const latest_release = Math.max(...Array.from(TrackMap.keys()));
-  //for dev purposes. Without this it only changes on full refresh
-  useEffect(() => {
-    setLatest(latest_release)
-  }, [latest_release])
-  const [latest, setLatest] = useState(latest_release)
+
   return (
     <main className='w-full space-y-16 '>
       <Title />
 
       <section className='justify-center mx-auto max-w-2xl space-y-16'>
-        <LatestRelease latest={latest} />
+        <Album upcoming="Artificial Eden" />
         <Listen />
         <Socials />
         <About />
