@@ -13,6 +13,8 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { link } from 'fs';
 import { TrackMap } from './TrackLookup';
+import { AlbumMap } from './AlbumLookup';
+import AE from './assets/AE.jpeg'
 
 //make it one big scrolldown like the pertubator site
 
@@ -40,28 +42,28 @@ const LatestRelease: React.FC<{ latest: number }> = ({ latest }) => {
     <div className='glass-pre'>
       <section className='glass release'>
         <figure>
-          <Header text='Latest Release' />
+          <Header text='Upcoming Album' />
           <strong className='text-3xl '>
             <h1 className='flex justify-start mb-2'>
-              {TrackMap.get(latest)!.title}
+              Artificial Eden
             </h1>
           </strong>
-          <iframe className='w-full h-96'
-            src={TrackMap.get(latest)!.iframe_src}
-            allowFullScreen
-          >
-          </iframe>
+          <Image
+            src={AE}
+            alt='Upcoming album cover art'
+            className='rounded-xl' />
           <p className='flex justify-start'>
-            {TrackMap.get(latest)!.description}
+            {/*use an album map with descriptions*/}
+            {AlbumMap.get("Artificial Eden")!.description}
+            Release date: {AlbumMap.get("Artificial Eden")!.release_date}
           </p>
           <br></br>
           <em className='text-xs'>
-            *note that I don't support monetizing AI art,
-            but returns on this will be minimal and I'm too broke for an artist right now
+            *note that this album imagery is temporary. I do not support monetizing AI art and any returns on a single or two right now will be minimal.
           </em>
         </figure>
       </section>
-    </div>
+    </div >
   )
 }
 
