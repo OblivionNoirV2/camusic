@@ -156,27 +156,21 @@ const Listen = () => {
       <section className='glass'>
         <Header text='Listen' />
         <ul className='space-y-8'>
-          <li>
-            <ListenComponent
+          <ListenComponent
 
-              img_src={spotify_img}
-              title='Spotify'
-            />
-          </li>
-          <li>
-            <ListenComponent
-              link_name='https://soundcloud.com/user-727553192'
-              img_src={soundcloud_img}
-              title='Soundcloud' />
+            img_src={spotify_img}
+            title='Spotify'
+          />
+          <ListenComponent
+            link_name='https://soundcloud.com/user-727553192'
+            img_src={soundcloud_img}
+            title='Soundcloud' />
 
-          </li>
-          <li>
-            <ListenComponent
-              link_name='https://www.youtube.com/channel/UCLF1VI-aiW0Q76jwAIprxFg'
-              img_src={youtube_img}
-              title='YouTube'
-            />
-          </li>
+          <ListenComponent
+            link_name='https://www.youtube.com/channel/UCLF1VI-aiW0Q76jwAIprxFg'
+            img_src={youtube_img}
+            title='YouTube'
+          />
         </ul>
       </section>
     </div>
