@@ -13,7 +13,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { link } from 'fs';
 import { TrackMap } from './TrackLookup';
-import { AlbumMap } from './AlbumLookup';
+
 import AE from './assets/AE.jpeg'
 
 //make it one big scrolldown like the pertubator site
@@ -29,9 +29,8 @@ const Title = () => {
       <hr className='opacity-20 -z-1 max-w-4xl justify-center 
       flex mx-auto mb-32'></hr>
     </section>
-
   )
-}
+};
 
 const Album: React.FC<{ upcoming: string }> = ({ upcoming }) => {
   const [isUpcoming, setIsUpcoming] = useState(true);
@@ -45,8 +44,8 @@ const Album: React.FC<{ upcoming: string }> = ({ upcoming }) => {
       setIsUpcoming(past_release_date > now);
     }
   }, [upcoming]);
-  //if the release date has passed, switch "upcoming" to "latest"
-  const album_header = isUpcoming ? 'Upcoming Album' : 'Latest Album';
+
+  const latest_key = Math.max(...Array.from(TrackMap.keys()));
 
   console.log("upcoming", upcoming)
 
@@ -54,29 +53,28 @@ const Album: React.FC<{ upcoming: string }> = ({ upcoming }) => {
     <div className='glass-pre'>
       <section className='glass release'>
         <figure>
-          <Header text={album_header} />
+          <Header text='Latest Release' />
           <strong className='text-3xl '>
             <h1 className='flex justify-start mb-2'>
-              Artificial Eden
+              {TrackMap.get(latest_key)!.title}
             </h1>
           </strong>
           <Image
             src={AE}
-            alt='Upcoming album cover art'
+            alt='Latest release cover art'
             className='rounded-xl' />
           <p className='flex justify-start'>
-            {AlbumMap.get("Artificial Eden")!.description}
-            Release date: {AlbumMap.get("Artificial Eden")!.release_date}
+            {TrackMap.get(latest_key)!.description} Released {TrackMap.get(latest_key)!.release_date}.
           </p>
           <br></br>
           <em className='text-xs'>
-            *note that this album imagery is temporary. I do not support monetizing AI art and any returns on a single or two right now will be minimal.
+            *note that my usage of AI art is temporary. I do not support monetizing AI art, I just can't afford real art right now and any returns on a single or two will be minimal.
           </em>
         </figure>
       </section>
     </div>
-  )
-}
+  );
+};
 
 interface ListenProps {
   title: string;
@@ -172,7 +170,7 @@ const Listen = () => {
         <Header text='Listen' />
         <ul className='space-y-8'>
           <ListenComponent
-            link_name='https://open.spotify.com/artist/5OKSxZy691sNwb7rMoA08L'
+
             img_src={spotify_img}
             title='Spotify'
           />
