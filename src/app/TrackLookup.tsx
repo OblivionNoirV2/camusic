@@ -1,11 +1,20 @@
 import React from "react";
 import { ReactNode } from "react";
+import Image from "next/image";
+import { StaticImageData } from "next/image";
+
+//images 
+
+import AE from './assets/AE.jpeg'
+
 interface TrackObject {
     description: ReactNode; //so I can add links
     iframe_src: string;
-    title: string //so I can automatically update the 
+    title: string; //so I can automatically update the 
     //latest release
-    release_date: string; //dd/mm//yyyy 
+    release_date: string; //dd/mm//yyyy
+    image?: StaticImageData;
+
 }
 //string = title
 export const TrackMap: Map<number, TrackObject> = new Map(

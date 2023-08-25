@@ -11,7 +11,6 @@ import { StaticImageData } from 'next/image';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Image from 'next/image';
-import { link } from 'fs';
 import { TrackMap } from './TrackLookup';
 
 import AE from './assets/AE.jpeg'
@@ -32,22 +31,10 @@ const Title = () => {
   )
 };
 
-const Album: React.FC<{ upcoming: string }> = ({ upcoming }) => {
+const Release = () => {
   const [isUpcoming, setIsUpcoming] = useState(true);
 
-  useEffect(() => {
-    if (upcoming === 'Upcoming') {
-      setIsUpcoming(true);
-    } else {
-      const past_release_date = new Date(upcoming);
-      const now = new Date();
-      setIsUpcoming(past_release_date > now);
-    }
-  }, [upcoming]);
-
   const latest_key = Math.max(...Array.from(TrackMap.keys()));
-
-  console.log("upcoming", upcoming)
 
   return (
     <div className='glass-pre'>
@@ -59,7 +46,7 @@ const Album: React.FC<{ upcoming: string }> = ({ upcoming }) => {
               {TrackMap.get(latest_key)!.title}
             </h1>
           </strong>
-          <Image
+          <Image //will be iframe once spotify is up, which brings the image with it
             src={AE}
             alt='Latest release cover art'
             className='rounded-xl' />
@@ -169,20 +156,27 @@ const Listen = () => {
       <section className='glass'>
         <Header text='Listen' />
         <ul className='space-y-8'>
-          <ListenComponent
+          <li>
+            <ListenComponent
 
-            img_src={spotify_img}
-            title='Spotify'
-          />
-          <ListenComponent
-            link_name='https://soundcloud.com/user-727553192'
-            img_src={soundcloud_img}
-            title='Soundcloud' />
-          <ListenComponent
-            link_name='https://www.youtube.com/channel/UCLF1VI-aiW0Q76jwAIprxFg'
-            img_src={youtube_img}
-            title='YouTube'
-          />
+              img_src={spotify_img}
+              title='Spotify'
+            />
+          </li>
+          <li>
+            <ListenComponent
+              link_name='https://soundcloud.com/user-727553192'
+              img_src={soundcloud_img}
+              title='Soundcloud' />
+
+          </li>
+          <li>
+            <ListenComponent
+              link_name='https://www.youtube.com/channel/UCLF1VI-aiW0Q76jwAIprxFg'
+              img_src={youtube_img}
+              title='YouTube'
+            />
+          </li>
         </ul>
       </section>
     </div>
@@ -219,12 +213,22 @@ const About = () => {
       </div>
     </>
   )
-}
+};
 //links to page with all descriptions and stuff 
 //Include a search bar on that page
-const FullDiscog = () => {
+const FullDiscogLink = () => {
 
-}
+  return (
+    <div className='glass-pre'>
+      <section className='glass flex justify-center mb-16'>
+        <h1 className='text-4xl'>
+          <Link href='/discog'>Click here to browse the full discography!</Link>
+        </h1>
+      </section>
+    </div>
+  );
+};
+
 export default function Home() {
 
   useEffect(() => {
@@ -263,17 +267,21 @@ export default function Home() {
       <Title />
 
       <section className='justify-center mx-auto max-w-2xl space-y-16'>
-        <Album upcoming="Artificial Eden" />
+        <Release />
+        <FullDiscogLink />
         <Listen />
         <Socials />
         <About />
-        <Image src={ca_logo} alt="crystal abyss logo"
-          className='rounded-2xl max-w-[16rem] mx-auto' />
+        <Image
+          src={ca_logo}
+          alt="crystal abyss logo"
+          className='max-w-[16rem] mx-auto'
+        />
         <br></br>
       </section>
       <script src="anime.min.js" async></script>
     </main>
   );
-}
+};
 
 
