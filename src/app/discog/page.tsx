@@ -35,7 +35,6 @@ const DiscogPage = () => {
                     onChange={e => setSearchTerm(e.target.value)}
                 />
                 <h4>Or browse below &#8595;</h4>
-
                 {
                     filtered_tracks.map((track, index) => {
                         return (
@@ -54,14 +53,14 @@ const DiscogPage = () => {
                         )
                     })
                 }
-                <button className="mt-6 border-white border-[.05rem] p-4 rounded-2xl image-c mb-8">
-                    <Link href="/">
+                <Link href="/">
+                    <button className="mt-6 border-white border-[.05rem] p-4 rounded-2xl image-c mb-8">
                         Back to home
-                    </Link>
-                </button>
+                    </button>
+                </Link>
             </section>
         </main>
-    )
-}
+    );
+};
 
 export default DiscogPage;
