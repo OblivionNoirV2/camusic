@@ -62,3 +62,32 @@ a:active {
 .image-c:hover {
   transform: scale(1.10);
 }
+
+.iframe-pre {
+  position: relative;
+}
+
+.iframe-pre::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: rgba(1, 106, 158, 0.25);
+  backdrop-filter: blur(.015rem);
+  /*just a tiny bit to give a kind of glass effect*/
+  -webkit-backdrop-filter: blur(.015rem);
+  border-radius: .5rem;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.iframe-pre iframe {
+  position: relative;
+  z-index: 0;
+  /*Makes sure it's below the ::before element */
+  border-radius: .5rem;
+
+}

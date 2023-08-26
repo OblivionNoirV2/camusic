@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import { TrackMap } from "../TrackLookup";
+import Link from "next/link";
 
 
 const YearHeadingTemplate: React.FC<{ year: number }> = ({ year }) => {
@@ -51,19 +52,25 @@ const DiscogPage = () => {
                     filtered_tracks.map((track, index) => {
                         return (
                             track.year === 2023 &&
-                            <div key={index} className="mt-4">
+                            <div key={index} className="mt-8">
                                 <h1 className="text-lg">{track.title}</h1>
                                 <hr className="w-1/3"></hr>
                                 <p>{track.description}</p>
-                                {
-                                    track.iframe_src &&
-                                    <iframe src={track.iframe_src} className="mt-2"></iframe>
+                                <div className=" iframe-pre">
 
-                                }
+                                    <iframe width="100%" height="66" className="mt-2"
+                                        src={track.iframe_src}>
+                                    </iframe>
+                                </div>
                             </div>
                         )
                     })
                 }
+                <button className="mt-6 border-white border-[.05rem] p-4 rounded-2xl image-c">
+                    <Link href="/">
+                        Back to home
+                    </Link>
+                </button>
             </section>
         </main>
     )

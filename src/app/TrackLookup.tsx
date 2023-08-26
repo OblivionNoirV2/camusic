@@ -15,6 +15,7 @@ interface TrackObject {
     release_date: string; //dd/mm//yyyy
     image?: StaticImageData;
     year: number; //for organizing
+    sc_link?: string;
 
 
 }
@@ -35,7 +36,8 @@ export const TrackMap: Map<number, TrackObject> = new Map(
                 //iframe_src: "https://open.spotify.com/embed/track/4Z6Q3Z2nmgF08TYmN0XYmi?utm_source=generator",
                 title: "Neon Underground",
                 release_date: "4/26/2023",
-                year: 2023
+                year: 2023,
+                iframe_src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1523324827&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
             }
         ],
         [
@@ -53,7 +55,8 @@ export const TrackMap: Map<number, TrackObject> = new Map(
                 //iframe_src: "https://open.spotify.com/embed/track/73XeMyEg7uBEkdBkoCvuX7?utm_source=generator",
                 title: "Twilight Imperium",
                 release_date: "5/11/2023",
-                year: 2023
+                year: 2023,
+                iframe_src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1536938128&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
             }
         ],
         [
@@ -71,11 +74,12 @@ export const TrackMap: Map<number, TrackObject> = new Map(
                 //iframe_src: "https://open.spotify.com/embed/track/4kxdr5ei4XLYpHP3p5JAn0?utm_source=generator",
                 title: "Artificial Eden",
                 release_date: "6/7/2023",
-                year: 2023
+                year: 2023,
+                iframe_src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1558778587&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+
             }
         ]
 
 
     ]
 )
-
