@@ -32,7 +32,7 @@ const Title = () => {
 };
 
 const Release = () => {
-  const [isUpcoming, setIsUpcoming] = useState(true);
+
 
   const latest_key = Math.max(...Array.from(TrackMap.keys()));
 
@@ -46,11 +46,12 @@ const Release = () => {
               {TrackMap.get(latest_key)!.title}
             </h1>
           </strong>
-          <Image //will be iframe once spotify is up, which brings the image with it
-            src={AE}
-            alt='Latest release cover art'
-            className='rounded-xl' />
-          <p className='flex justify-start'>
+          <div className=" iframe-pre">
+            <iframe width="100%" height="266" className="mt-2"
+              src={TrackMap.get(latest_key)!.iframe_src}>
+            </iframe>
+          </div>
+          <p className='flex justify-start mt-2'>
             {TrackMap.get(latest_key)!.description} Released {TrackMap.get(latest_key)!.release_date}.
           </p>
           <br></br>
@@ -160,6 +161,7 @@ const Listen = () => {
 
             img_src={spotify_img}
             title='Spotify'
+            link_name="https://open.spotify.com/artist/5OKSxZy691sNwb7rMoA08L?si=g5T2nBJfRDmFULirvGrW3Q"
           />
           <ListenComponent
             link_name='https://soundcloud.com/user-727553192'
@@ -201,8 +203,7 @@ const About = () => {
             being a couple of my biggest inspirations along with
             other artists like <a href='https://open.spotify.com/track/6rMRUcrL63WNnhMPYew7pA?si=17d1a83abb8d437f' target='_blank'>MGLA </a> and
             <a href='https://open.spotify.com/track/4m4Yj2z7CG1LUNbcg1uOP3?si=bd5d217dd6614e89' target='_blank'> Perturbator. </a>
-            Dark and beautiful with a story in mind is how I compose. I also play guitar, but it's not quite up to recording par yet.
-            Future releases will probably have guitar in them and be quite heavy! Thanks for visiting my site and I hope you like what you hear!
+            Dark and beautiful with a story in mind is how I compose. Thanks for visiting my site and I hope you like what you hear!
           </p>
         </section>
       </div>

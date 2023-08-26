@@ -4,16 +4,6 @@ import { TrackMap } from "../TrackLookup";
 import Link from "next/link";
 
 
-const YearHeadingTemplate: React.FC<{ year: number }> = ({ year }) => {
-    return (
-        <>
-            <h1 className="text-3xl mt-16">{year}</h1>
-            <hr className="w-1/2 mb-4" />
-        </>
-
-    )
-
-}
 const DiscogPage = () => {
     const tracks_as_list = Array.from(TrackMap.values());
     const [searchTerm, setSearchTerm] = useState('');
@@ -34,7 +24,7 @@ const DiscogPage = () => {
                 <hr className="w-full bg-white" />
 
                 <p className="text-2xl mt-4 mb-4">
-                    Here you can find a complete list of all my songs by year, with release dates and commentary from me.
+                    Here you can find a complete list of all my songs, with release dates and commentary from me.
                 </p>
                 <h4>Search by year or song title...</h4>
                 <input
@@ -46,18 +36,16 @@ const DiscogPage = () => {
                 />
                 <h4>Or browse below &#8595;</h4>
 
-                <YearHeadingTemplate year={2023} />
-
                 {
                     filtered_tracks.map((track, index) => {
                         return (
                             track.year === 2023 &&
-                            <div key={index} className="mt-8">
+                            <div key={index} className="mt-16">
                                 <h1 className="text-lg">{track.title}</h1>
                                 <hr className="w-1/3"></hr>
                                 <p>{track.description}</p>
+                                <p>Released {track.release_date}</p>
                                 <div className=" iframe-pre">
-
                                     <iframe width="100%" height="66" className="mt-2"
                                         src={track.iframe_src}>
                                     </iframe>
@@ -66,7 +54,7 @@ const DiscogPage = () => {
                         )
                     })
                 }
-                <button className="mt-6 border-white border-[.05rem] p-4 rounded-2xl image-c">
+                <button className="mt-6 border-white border-[.05rem] p-4 rounded-2xl image-c mb-8">
                     <Link href="/">
                         Back to home
                     </Link>

@@ -78,6 +78,21 @@ export const TrackMap: Map<number, TrackObject> = new Map(
                 iframe_src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1558778587&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
 
             }
+        ],
+        [
+            4, {
+                description: (
+                    <>
+                        This one sure pulls on the heartstrings. I wanted to make a simple, emotionally charged piano track, like Gwyn's theme from Dark Souls. I wrote that gorgeous main melody right off the bat and knew I had something special in the works.
+                        I think it sounds very nostalgic, melancholy with a touch of hope.
+                    </>
+                ),
+                title: "Memory of the Stars",
+                release_date: "8/26/2023",
+                year: 2023,
+                iframe_src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1601788314&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+
+            }
         ]
 
 
