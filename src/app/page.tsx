@@ -6,6 +6,7 @@ import soundcloud_img from './assets/soundcloud.png';
 import youtube_img from './assets/youtube.png';
 import twitter_img from './assets/twitter.png';
 import github_img from './assets/github.png';
+import steam_img from './assets/steamlogo.png';
 import ca_logo from './assets/ca_logo_nobg.png';
 import { StaticImageData } from 'next/image';
 import { useEffect } from 'react';
@@ -142,6 +143,10 @@ const Socials = () => {
             title='Github'
             link_name='https://github.com/OblivionNoirV2'
             img_src={github_img} />
+          <SocialsComponent
+            title='Steam'
+            link_name='https://steamcommunity.com/profiles/76561198978593030/'
+            img_src={steam_img} />
         </ul>
       </div>
     </section>
