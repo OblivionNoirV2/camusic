@@ -51,10 +51,15 @@ const DiscogPage = () => {
                     filtered_tracks.map((track, index) => {
                         return (
                             track.year === 2023 &&
-                            <div key={index}>
+                            <div key={index} className="mt-4">
                                 <h1 className="text-lg">{track.title}</h1>
+                                <hr className="w-1/3"></hr>
                                 <p>{track.description}</p>
-                                <iframe src={track.iframe_src} className="mt-2"></iframe>
+                                {
+                                    track.iframe_src &&
+                                    <iframe src={track.iframe_src} className="mt-2"></iframe>
+
+                                }
                             </div>
                         )
                     })

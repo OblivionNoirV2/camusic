@@ -9,7 +9,7 @@ import AE from './assets/AE.jpeg'
 
 interface TrackObject {
     description: ReactNode; //so I can add links
-    iframe_src: string;
+    iframe_src?: string;
     title: string; //so I can automatically update the 
     //latest release
     release_date: string; //dd/mm//yyyy
@@ -32,7 +32,7 @@ export const TrackMap: Map<number, TrackObject> = new Map(
                         accomplishes that pretty well.
                     </>
                 ),
-                iframe_src: "https://open.spotify.com/embed/track/4Z6Q3Z2nmgF08TYmN0XYmi?utm_source=generator",
+                //iframe_src: "https://open.spotify.com/embed/track/4Z6Q3Z2nmgF08TYmN0XYmi?utm_source=generator",
                 title: "Neon Underground",
                 release_date: "4/26/2023",
                 year: 2023
@@ -50,7 +50,7 @@ export const TrackMap: Map<number, TrackObject> = new Map(
                     </>
 
                 ),
-                iframe_src: "https://open.spotify.com/embed/track/73XeMyEg7uBEkdBkoCvuX7?utm_source=generator",
+                //iframe_src: "https://open.spotify.com/embed/track/73XeMyEg7uBEkdBkoCvuX7?utm_source=generator",
                 title: "Twilight Imperium",
                 release_date: "5/11/2023",
                 year: 2023
@@ -68,7 +68,7 @@ export const TrackMap: Map<number, TrackObject> = new Map(
                         with a sense of finality and loneliness - nostalgia for the past. I'm considering making a whole album with this concept.
                     </>
                 ),
-                iframe_src: "https://open.spotify.com/embed/track/4kxdr5ei4XLYpHP3p5JAn0?utm_source=generator",
+                //iframe_src: "https://open.spotify.com/embed/track/4kxdr5ei4XLYpHP3p5JAn0?utm_source=generator",
                 title: "Artificial Eden",
                 release_date: "6/7/2023",
                 year: 2023
