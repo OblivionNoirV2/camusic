@@ -10,11 +10,9 @@ import steam_img from './assets/steamlogo.png';
 import ca_logo from './assets/ca_logo_nobg.png';
 import { StaticImageData } from 'next/image';
 import { useEffect } from 'react';
-import { useState } from 'react';
 import Image from 'next/image';
 import { TrackMap } from './TrackLookup';
 
-import AE from './assets/AE.jpeg'
 
 //make it one big scrolldown like the pertubator site
 
@@ -22,13 +20,13 @@ import AE from './assets/AE.jpeg'
 const Title = () => {
   return (
     <section >
-      <h1 className='page-title text-8xl flex justify-center 
-    w-full mx-auto tracking-widest'>
+      <h1 className='page-title sm:text-8xl flex justify-center 
+    w-full mx-auto tracking-widest text-5xl pl-4 pt-4 sm:pl-0 sm:pt-0 '>
         crystal abyss
       </h1>
       <hr className='opacity-20 -z-1 max-w-4xl justify-center 
-      flex mx-auto mb-32'></hr>
-    </section>
+      flex mx-auto mb-16 sm:mb-32'></hr>
+    </section >
   )
 };
 
@@ -265,9 +263,11 @@ export default function Home() {
 
   return (
     <main className='w-full space-y-16 '>
+
       <Title />
 
-      <section className='justify-center mx-auto max-w-2xl space-y-16'>
+
+      <section className='justify-center max-w-2xl mx-auto px-8 space-y-16'>
         <Release />
         <FullDiscogLink />
         <Listen />

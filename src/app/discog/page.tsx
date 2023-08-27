@@ -19,7 +19,7 @@ const DiscogPage = () => {
 
     return (
         <main className="flex justify-center">
-            <section className="flex flex-col items-center max-w-2xl">
+            <section className="flex flex-col items-center max-w-2xl mx-8">
                 <h1 className="text-5xl">Discography</h1>
                 <hr className="w-full bg-white" />
 
