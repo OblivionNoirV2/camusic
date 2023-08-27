@@ -59,6 +59,10 @@ a:active {
 
 }
 
+a:hover {
+  color: rgb(146, 1, 122);
+}
+
 .image-c:hover {
   transform: scale(1.10);
 }
