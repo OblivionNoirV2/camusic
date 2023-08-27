@@ -8,9 +8,6 @@ const DiscogPage = () => {
     const tracks_as_list = Array.from(TrackMap.values());
     const [searchTerm, setSearchTerm] = useState('');
 
-    useEffect(() => {
-        console.log(tracks_as_list);
-    }, []);
     //search term changes the map list to adjust what's shown
     //Checks for year or titles
     const filtered_tracks = tracks_as_list.filter(track => {
@@ -30,9 +27,10 @@ const DiscogPage = () => {
                 <input
                     type="text"
                     placeholder="Enter a year or song title..."
-                    className="w-2/3 sm:w-1/2 my-2 text-xs sm:text-md"
+                    className="w-2/3 sm:w-1/2 my-2 text-xs sm:text-md h-8"
                     value={searchTerm}
                     onChange={e => setSearchTerm(e.target.value)}
+
                 />
                 <h4>Or browse below &#8595;</h4>
                 {
@@ -45,7 +43,7 @@ const DiscogPage = () => {
                                 <p className="text-xs sm:text-xl">{track.description}</p>
                                 <p className="text-xs sm:text-xl">Released {track.release_date}</p>
                                 <div className=" iframe-pre">
-                                    <iframe width="100%" className="mt-2 h-16 sm:h-24 "
+                                    <iframe width="100%" className="mt-2 h-24 "
                                         src={track.iframe_src}>
                                     </iframe>
                                 </div>
