@@ -171,11 +171,6 @@ const Listen = () => {
             img_src={soundcloud_img}
             title='Soundcloud' />
 
-          <ListenComponent
-            link_name='https://www.youtube.com/channel/UCLF1VI-aiW0Q76jwAIprxFg'
-            img_src={youtube_img}
-            title='YouTube'
-          />
         </ul>
       </section>
     </div>
