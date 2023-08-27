@@ -225,9 +225,10 @@ const FullDiscogLink = () => {
 
 export default function Home() {
 
-  const is_mobile = window.innerWidth < 640;
+
 
   useEffect(() => {
+    const is_mobile = window.innerWidth < 640;
     const bounce = anime({
       targets: '.glass-pre',
       translateY:
@@ -258,7 +259,7 @@ export default function Home() {
         observer.unobserve(element);
       }
     };
-  }, [is_mobile]);
+  }, []);
 
   return (
     <main className='w-full space-y-16 '>
