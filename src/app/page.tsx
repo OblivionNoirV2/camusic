@@ -181,7 +181,7 @@ const Listen = () => {
 const Header: React.FC<{ text: string }> = ({ text }) => {
   return (
     <>
-      <h1 className='text-2xl sm:text-4xl flex justify-start'>{text}</h1>
+      <h1 className='text-xl sm:text-4xl flex justify-start'>{text}</h1>
       <hr className='mb-4'></hr>
     </>
 

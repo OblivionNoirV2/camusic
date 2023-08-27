@@ -18,6 +18,13 @@ html {
   padding: 2rem;
 }
 
+@media(max-width: 640px) {
+  .glass {
+    padding: .5rem;
+    margin: 1.5rem;
+  }
+}
+
 .glass-pre {
   position: relative;
   border: .1rem solid rgba(255, 255, 255, 0.18);
