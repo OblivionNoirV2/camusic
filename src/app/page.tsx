@@ -40,22 +40,22 @@ const Release = () => {
       <section className='glass release'>
         <figure>
           <Header text='Latest Release' />
-          <strong className='text-3xl '>
+          <strong className='text-xl sm:text-3xl'>
             <h1 className='flex justify-start mb-2'>
               {TrackMap.get(latest_key)!.title}
             </h1>
           </strong>
           <div className=" iframe-pre">
-            <iframe width="100%" height="266" className="mt-2"
+            <iframe width="100%" className="mt-2"
               src={TrackMap.get(latest_key)!.iframe_src}>
             </iframe>
           </div>
-          <p className='flex justify-start mt-2'>
+          <p className='flex justify-start mt-2 text-xs sm:text-lg'>
             {TrackMap.get(latest_key)!.description} Released {TrackMap.get(latest_key)!.release_date}.
           </p>
           <br></br>
-          <em className='text-xs'>
-            *note that my usage of AI art is temporary. I do not support monetizing AI art, I just can't afford real art right now and any returns on a single or two will be minimal.
+          <em className='text-[0.5rem] sm:text-xs'>
+            *note that my usage of AI art is temporary. I do not support monetizing AI art, I just can't afford real art right now and any returns on this will be minimal.
           </em>
         </figure>
       </section>
@@ -78,14 +78,14 @@ const ImageComponent: React.FC<ImageProps> = ({
   img_src, alt }) => {
   return (
     <Image src={img_src} alt={alt}
-      className='image-c max-w-sm w-24 mr-4 rounded-xl' />
+      className='image-c w-12 sm:w-24 mr-4 rounded-xl' />
 
   )
 }
 
 const ListenComponent: React.FC<ListenProps> = ({ link_name, img_src, title }) => {
   return (
-    <li className='flex text-2xl'>
+    <li className='flex text-md sm:text-2xl'>
       {link_name ?
         <a href={link_name} target='_blank'>
           <ImageComponent img_src={img_src} alt={`${title} logo`} />
@@ -115,7 +115,7 @@ interface SocialsProps {
 }
 const SocialsComponent: React.FC<SocialsProps> = ({ title, link_name, img_src }) => {
   return (
-    <li className='flex text-2xl'>
+    <li className='flex text-md sm:text-2xl'>
       <a href={link_name} target='_blank'>
         <ImageComponent img_src={img_src} alt={`${title} logo`} />
       </a>
@@ -186,7 +186,7 @@ const Listen = () => {
 const Header: React.FC<{ text: string }> = ({ text }) => {
   return (
     <>
-      <h1 className='text-4xl flex justify-start'>{text}</h1>
+      <h1 className='text-2xl sm:text-4xl flex justify-start'>{text}</h1>
       <hr className='mb-4'></hr>
     </>
 
@@ -198,7 +198,7 @@ const About = () => {
       <div className='glass-pre'>
         <section className='glass'>
           <Header text='A bit about me' />
-          <p className='text-xl leading-relaxed'>
+          <p className='text-sm sm:text-xl leading-relaxed'>
             Crystal Abyss is a music project by me, Benjamin Donahue. I take a lot
             of inspiration from video game music, composers such as
             <a href='https://open.spotify.com/track/4aPltIjGkJx26Y9cBHu14U?si=66d4d060c0ec4fec' target='_blank'> Yoko Shimomura </a>
@@ -220,7 +220,7 @@ const FullDiscogLink = () => {
   return (
     <div className='glass-pre'>
       <section className='glass flex justify-center mb-16'>
-        <h1 className='text-4xl'>
+        <h1 className='text-xl sm:text-4xl'>
           <Link href='/discog'>Click here to browse the full discography!</Link>
         </h1>
       </section>
@@ -276,7 +276,7 @@ export default function Home() {
         <Image
           src={ca_logo}
           alt="crystal abyss logo"
-          className='max-w-[16rem] mx-auto'
+          className='max-w-[8rem] sm:max-w-[16rem] mx-auto'
         />
         <br></br>
       </section>
