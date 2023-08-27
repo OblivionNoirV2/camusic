@@ -225,10 +225,14 @@ const FullDiscogLink = () => {
 
 export default function Home() {
 
+  const is_mobile = window.innerWidth < 640;
+
   useEffect(() => {
     const bounce = anime({
       targets: '.glass-pre',
-      translateY: -80,
+      translateY:
+        is_mobile ? -40 : -80
+      ,
       autoplay: false, //only run when in view
     });
 
