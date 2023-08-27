@@ -258,7 +258,7 @@ export default function Home() {
         observer.unobserve(element);
       }
     };
-  }, []);
+  }, [is_mobile]);
 
   return (
     <main className='w-full space-y-16 '>
