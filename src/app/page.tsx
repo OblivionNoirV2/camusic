@@ -228,11 +228,11 @@ export default function Home() {
 
 
   useEffect(() => {
-    const is_mobile = window.innerWidth < 640;
+    const is_mobile = window.innerWidth < 640; //must be defined within the effect or live build fails
     const bounce = anime({
       targets: '.glass-pre',
       translateY:
-        is_mobile ? -40 : -80
+        is_mobile ? -40 : -80 //clips on mobile if 80 is used
       ,
       autoplay: false, //only run when in view
     });
@@ -278,7 +278,8 @@ export default function Home() {
           alt="crystal abyss logo"
           className='max-w-[8rem] sm:max-w-[16rem] mx-auto'
         />
-        <br></br>
+
+
       </section>
       <script src="anime.min.js" async></script>
     </main>

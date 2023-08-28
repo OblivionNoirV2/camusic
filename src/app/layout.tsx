@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     'music', 'composer',
   ],
   authors: [{ name: 'Benjamin Donahue' }],
-  
+
 
 }
 
@@ -27,7 +27,10 @@ export default function RootLayout({
   return (
     <html lang="en">
 
-      <body className={robo.className}>{children}</body>
+      <body className={robo.className}>{children}
+        <p className='justify-center flex '>Copyright Benjamin Donahue 2023</p>
+      </body>
+
     </html>
   )
 }
