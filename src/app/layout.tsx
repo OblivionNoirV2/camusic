@@ -20,6 +20,10 @@ export const metadata: Metadata = {
 
 }
 
+function GetYear() {
+  return new Date().getFullYear()
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -28,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={robo.className}>{children}
-        <p className='justify-center flex '>Copyright Benjamin Donahue 2023</p>
+        <p className='mb-4 justify-center flex'>Copyright Benjamin Donahue 2023{GetYear() !== 2023 ? -GetYear() : null}</p>
       </body>
 
     </html>
