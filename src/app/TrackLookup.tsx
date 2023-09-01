@@ -93,8 +93,24 @@ export const TrackMap: Map<number, TrackObject> = new Map(
                 iframe_src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1601788314&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
 
             }
+        ],
+        [
+            5, {
+                description: (
+                    <>
+                        I asked myself, what would insanity sound like in epic music form?
+                        This track is evil, chaotic
+                        and sounds like fighting an eldritch beast to save the world or something.
+                    </>
+                ),
+                title: "Abyssal Lunacy",
+                release_date: "9/1/2023",
+                year: 2023,
+                iframe_src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1606066524&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+            }
         ]
 
 
     ]
 )
+
