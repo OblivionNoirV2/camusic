@@ -1,12 +1,7 @@
 'use client'
 import anime from 'animejs/lib/anime.es.js';
 import Link from 'next/link';
-import spotify_img from './assets/spotify.png';
-import soundcloud_img from './assets/soundcloud.png';
-import youtube_img from './assets/youtube.png';
-import twitter_img from './assets/twitter.png';
-import github_img from './assets/github.png';
-import steam_img from './assets/steamlogo.png';
+
 import ca_logo from './assets/ca_logo_nobg.png';
 import { StaticImageData } from 'next/image';
 import { useEffect } from 'react';
@@ -66,32 +61,19 @@ const Release = () => {
 interface ListenProps {
   title: string;
   link_name?: string;
-  img_src: StaticImageData;
+
 }
 
 interface ImageProps {
-  img_src: StaticImageData;
+
   alt: string;
 }
 
-const ImageComponent: React.FC<ImageProps> = ({
-  img_src, alt }) => {
-  return (
-    <Image src={img_src} alt={alt}
-      className='image-c w-12 sm:w-24 mr-4 rounded-xl' />
 
-  )
-}
-
-const ListenComponent: React.FC<ListenProps> = ({ link_name, img_src, title }) => {
+const ListenComponent: React.FC<ListenProps> = ({ link_name, title }) => {
   return (
     <li className='flex text-md sm:text-2xl'>
-      {link_name ?
-        <a href={link_name} target='_blank'>
-          <ImageComponent img_src={img_src} alt={`${title} logo`} />
-        </a> :
-        <ImageComponent img_src={img_src} alt={`${title} logo`} />
-      }
+
 
       {
         link_name ?
@@ -110,15 +92,12 @@ const ListenComponent: React.FC<ListenProps> = ({ link_name, img_src, title }) =
 
 interface SocialsProps {
   title: string;
-  img_src: StaticImageData;
   link_name: string
 }
-const SocialsComponent: React.FC<SocialsProps> = ({ title, link_name, img_src }) => {
+const SocialsComponent: React.FC<SocialsProps> = ({ title, link_name }) => {
   return (
     <li className='flex text-md sm:text-2xl'>
-      <a href={link_name} target='_blank'>
-        <ImageComponent img_src={img_src} alt={`${title} logo`} />
-      </a>
+
       <a href={link_name} target='_blank'>
         <h1>{title}</h1>
       </a>
@@ -135,16 +114,16 @@ const Socials = () => {
           <SocialsComponent
             title='Twitter'
             link_name='https://twitter.com/Enigma_Soul01'
-            img_src={twitter_img}
+
           />
           <SocialsComponent
             title='Github'
             link_name='https://github.com/OblivionNoirV2'
-            img_src={github_img} />
+          />
           <SocialsComponent
             title='Steam'
             link_name='https://steamcommunity.com/profiles/76561198978593030/'
-            img_src={steam_img} />
+          />
         </ul>
       </div>
     </section>
@@ -162,13 +141,12 @@ const Listen = () => {
         <ul className='space-y-8'>
           <ListenComponent
 
-            img_src={spotify_img}
             title='Spotify'
             link_name="https://open.spotify.com/artist/5OKSxZy691sNwb7rMoA08L?si=g5T2nBJfRDmFULirvGrW3Q"
           />
           <ListenComponent
             link_name='https://soundcloud.com/user-727553192'
-            img_src={soundcloud_img}
+
             title='Soundcloud' />
 
         </ul>
