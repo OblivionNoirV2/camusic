@@ -179,7 +179,7 @@ const About = () => {
             being a couple of my biggest inspirations along with
             other artists like <a href='https://open.spotify.com/track/6rMRUcrL63WNnhMPYew7pA?si=17d1a83abb8d437f' target='_blank'>MGLA </a> and
             <a href='https://open.spotify.com/track/4m4Yj2z7CG1LUNbcg1uOP3?si=bd5d217dd6614e89' target='_blank'> Perturbator. </a>
-            Dark and beautiful with a story in mind is how I compose. Thanks for visiting my site and I hope you like what you hear!
+            Dark and beautiful with a story in mind is how I compose. I also play guitar and violin and these will eventually make an apperance in my music. Thanks for visiting my site and I hope you like what you hear!
           </p>
         </section>
       </div>
